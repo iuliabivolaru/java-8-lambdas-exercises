@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class FilterUsingReduceTest {
     }
 
     private <I> void assertFiltered(Predicate<I> predicate, List<I> input, List<I> expectedOutput) {
-        List<I> output = FilterUsingReduce.filter(input.stream(), predicate);
+        List<I> output = FilterUsingReduce.filterUsingFlatMap(input.stream(), predicate).collect(Collectors.toList());
         assertEquals(expectedOutput, output);
 
         List<I> parallelOutput = FilterUsingReduce.filter(input.parallelStream(), predicate);
