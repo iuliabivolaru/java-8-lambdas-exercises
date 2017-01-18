@@ -37,5 +37,4 @@ public interface PerformanceFixed {
         return artist -> Stream.of(Stream.of(artist), artist.getMembers()).flatMap(a->a);
     }
 
-
 }
