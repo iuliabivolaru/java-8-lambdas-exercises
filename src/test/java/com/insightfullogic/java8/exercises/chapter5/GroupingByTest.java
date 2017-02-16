@@ -13,7 +13,7 @@ public class GroupingByTest {
 
     @Test
     public void stringsByLength() {
-        GroupingBy<String, Integer> stringIntegerGroupingBy = new GroupingBy<>(String::length);
+        GroupingBy<String, Integer> stringIntegerGroupingBy = new GroupingBy<>((s) -> s.length());
         Map<Integer,List<String>> results = Stream.of("a", "b", "cc", "dd")
                                                   .collect(stringIntegerGroupingBy);
 

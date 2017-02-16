@@ -10,8 +10,19 @@ public class Fibonacci {
     public Fibonacci() {
     }
 
+    private HashMap<Integer, Long> stash = new HashMap();
+
     public long fibonacci(int x) {
-        return Exercises.replaceThisWithSolution();
+        return stash.computeIfAbsent(x, (key) -> {
+            switch (key) {
+                case 0:
+                    return 0L;
+                case 1:
+                    return 1L;
+                default:
+                    return fibonacci(key - 2) + fibonacci(key - 1);
+            }
+        });
     }
 
 }
